@@ -74,21 +74,21 @@ export default function LandingPage() {
                 Inicio
               </a>
               <a
-                href="#features"
+                href="/caracteristicas"
                 className="transition hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Características
               </a>
               <a
-                href="#"
+                href="/precios"
                 className="transition hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Precios
               </a>
               <a
-                href="#"
+                href="/contacto"
                 className="transition hover:text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
