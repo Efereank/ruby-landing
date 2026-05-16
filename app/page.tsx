@@ -115,11 +115,10 @@ export default function LandingPage() {
             muted
             loop
             playsInline
-            poster="/rubyy.png"
             className="h-full w-full object-cover opacity-30"
             style={{ animationDuration: "10s" }}
           >
-              <source src="/hero-video.mp4" type="video/mp4" />
+              <source src="/hero-video-light.mp4" type="video/mp4" />
               {/* Fallback por si el video no carga */}
               <div className="h-full w-full bg-zinc-950" />
             </video>
