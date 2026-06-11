@@ -44,9 +44,7 @@ export default function ContactPage() {
             <Link href="/" className="transition hover:text-white">
               Inicio
             </Link>
-            <Link href="/caracteristicas" className="transition hover:text-white">
-              Características
-            </Link>
+
             <Link href="/precios" className="transition hover:text-white">
               Precios
             </Link>
@@ -74,9 +72,6 @@ export default function ContactPage() {
             <nav className="flex flex-col gap-4 text-sm font-medium text-zinc-400">
               <Link href="/" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
                 Inicio
-              </Link>
-              <Link href="/caracteristicas" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Características
               </Link>
               <Link href="/precios" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
                 Precios

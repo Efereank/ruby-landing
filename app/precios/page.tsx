@@ -17,12 +17,12 @@ export default function PricingPage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">("monthly");
 
-  const plans = [
+const plans = [
     {
       name: "Arranque",
       description: "Perfecto para barberos independientes que empiezan a digitalizarse.",
-      monthlyPrice: 19,
-      yearlyPrice: 15,
+      monthlyPrice: 19.99, // Antes 19
+      yearlyPrice: 15.99,  // Antes 15
       icon: <Zap className="h-5 w-5 text-amber-500" />,
       popular: false,
       features: [
@@ -42,8 +42,8 @@ export default function PricingPage() {
     {
       name: "Profesional",
       description: "La opción más elegida por barberías con equipo y volumen medio de clientes.",
-      monthlyPrice: 39,
-      yearlyPrice: 32,
+      monthlyPrice: 39.99, // Antes 39
+      yearlyPrice: 31.99,  // Antes 32 (lo bajé un centavo para que suene a ganga)
       icon: <Star className="h-5 w-5 text-amber-500" />,
       popular: true,
       features: [
@@ -61,8 +61,8 @@ export default function PricingPage() {
     {
       name: "Barbería Pro",
       description: "Para negocios con alto volumen que necesitan control total y personalización.",
-      monthlyPrice: 69,
-      yearlyPrice: 55,
+      monthlyPrice: 69.99, // Antes 69
+      yearlyPrice: 54.99,  // Antes 55
       icon: <Building2 className="h-5 w-5 text-amber-500" />,
       popular: false,
       features: [
@@ -99,9 +99,7 @@ export default function PricingPage() {
             <Link href="/" className="transition hover:text-white">
               Inicio
             </Link>
-            <Link href="/caracteristicas" className="transition hover:text-white">
-              Características
-            </Link>
+
             <Link href="/precios" className="transition hover:text-white text-amber-500">
               Precios
             </Link>
@@ -129,9 +127,6 @@ export default function PricingPage() {
             <nav className="flex flex-col gap-4 text-sm font-medium text-zinc-400">
               <Link href="/" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
                 Inicio
-              </Link>
-              <Link href="/caracteristicas" className="transition hover:text-white" onClick={() => setMobileMenuOpen(false)}>
-                Características
               </Link>
               <Link href="/precios" className="transition hover:text-white text-amber-500" onClick={() => setMobileMenuOpen(false)}>
                 Precios
@@ -207,12 +202,19 @@ export default function PricingPage() {
                 <h3 className="text-xl font-bold">{plan.name}</h3>
                 <p className="mt-2 text-sm text-zinc-400">{plan.description}</p>
 
-                <div className="mt-6">
-                  <span className="text-4xl font-extrabold">
-                    ${billingCycle === "monthly" ? plan.monthlyPrice : plan.yearlyPrice}
-                  </span>
-                  <span className="text-zinc-400">/mes</span>
-                </div>
+<div className="mt-6">
+  <span className="text-4xl font-extrabold">
+    ${billingCycle === "monthly" 
+      ? Math.floor(plan.monthlyPrice) 
+      : Math.floor(plan.yearlyPrice)}
+    <span className="text-xl">
+      .{billingCycle === "monthly" 
+         ? (plan.monthlyPrice % 1).toFixed(2).substring(2) 
+         : (plan.yearlyPrice % 1).toFixed(2).substring(2)}
+    </span>
+  </span>
+  <span className="text-zinc-400">/mes</span>
+</div>
                 {billingCycle === "yearly" && (
                   <p className="mt-1 text-xs text-amber-500">
                     Facturado anualmente (${plan.yearlyPrice * 12}/año)
